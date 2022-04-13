@@ -1,12 +1,24 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public Rigidbody rb;
 
-    public float forwardForce = 2000f;
-    public float sidewaysForce = 500f;
+    private float forwardForce;
+    private float sidewaysForce = 100f;
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Endless")
+        {
+            forwardForce = 0f;
+        }
+        else
+        {
+            forwardForce = 2000f;
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
